@@ -1,0 +1,17 @@
+services:
+  mongo:
+    image: mongo:8                # official MongoDB image, version 8
+    container_name: chatflow-mongo
+    ports:
+      - "27017:27017"             # your PC's port : container's port
+    volumes:
+      - mongo-data:/data/db       # keep data even if the container is deleted
+
+  redis:
+    image: redis:7-alpine         # small Redis image
+    container_name: chatflow-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  mongo-data:
